@@ -1,75 +1,310 @@
-<header>
+# 🤖 Trading Bot Pro
 
-<!--
-  <<< Author notes: Course header >>>
-  Include a 1280×640 image, course title in sentence case, and a concise description in emphasis.
-  In your repository settings: enable template repository, add your 1280×640 social image, auto delete head branches.
-  Add your open source license, GitHub uses MIT license.
--->
+Un bot de trading profesional para criptomonedas con inteligencia artificial, gestión de riesgo avanzada y características de seguridad para inversión real.
 
-# Introduction to GitHub
+## 🚀 Características Principales
 
-_Get started using GitHub in less than an hour._
+### 🧠 Inteligencia Artificial
+- **Machine Learning Avanzado**: Modelos Random Forest y Gradient Boosting
+- **Feature Engineering**: 40+ indicadores técnicos y características de mercado
+- **Validación Cruzada**: TimeSeriesSplit para validación temporal
+- **Reentrenamiento Automático**: Modelos actualizados periódicamente
 
-</header>
+### 🛡️ Gestión de Riesgo
+- **Kelly Criterion**: Cálculo óptimo del tamaño de posición
+- **Stop Loss Dinámico**: Basado en volatilidad del mercado
+- **Límites de Pérdida**: Máximo diario y por posición
+- **Correlación**: Prevención de posiciones correlacionadas
+- **Parada de Emergencia**: Cierre automático en situaciones críticas
 
-<!--
-  <<< Author notes: Step 1 >>>
-  Choose 3-5 steps for your course.
-  The first step is always the hardest, so pick something easy!
-  Link to docs.github.com for further explanations.
-  Encourage users to open new tabs for steps!
--->
+### 🔒 Seguridad
+- **Variables de Entorno**: API keys nunca en código
+- **Modo Demo**: Pruebas sin riesgo real
+- **Validación de Entrada**: Sanitización de todos los inputs
+- **Logging Completo**: Auditoría de todas las operaciones
 
-## Step 1: Create a branch
+### 📊 Monitoreo y Análisis
+- **Base de Datos**: SQLite para persistencia de datos
+- **Métricas de Rendimiento**: Sharpe ratio, drawdown, win rate
+- **Notificaciones Telegram**: Alertas en tiempo real
+- **Interfaz Gráfica**: Control visual del bot
 
-_Welcome to "Introduction to GitHub"! :wave:_
+## 🔧 Instalación
 
-**What is GitHub?**: GitHub is a collaboration platform that uses _[Git](https://docs.github.com/get-started/quickstart/github-glossary#git)_ for versioning. GitHub is a popular place to share and contribute to [open-source](https://docs.github.com/get-started/quickstart/github-glossary#open-source) software.
-<br>:tv: [Video: What is GitHub?](https://www.youtube.com/watch?v=pBy1zgt0XPc)
+### Requisitos
+- Python 3.8 o superior
+- Cuenta de Binance con API habilitada
+- Bot de Telegram (opcional)
 
-**What is a repository?**: A _[repository](https://docs.github.com/get-started/quickstart/github-glossary#repository)_ is a project containing files and folders. A repository tracks versions of files and folders. For more information, see "[About repositories](https://docs.github.com/en/repositories/creating-and-managing-repositories/about-repositories)" from GitHub Docs.
+### Instalación Automática
+```bash
+# Clonar el repositorio
+git clone https://github.com/tu-usuario/trading-bot-pro.git
+cd trading-bot-pro
 
-**What is a branch?**: A _[branch](https://docs.github.com/en/get-started/quickstart/github-glossary#branch)_ is a parallel version of your repository. By default, your repository has one branch named `main` and it is considered to be the definitive branch. Creating additional branches allows you to copy the `main` branch of your repository and safely make any changes without disrupting the main project. Many people use branches to work on specific features without affecting any other parts of the project.
+# Ejecutar setup automático
+python setup.py
+```
 
-Branches allow you to separate your work from the `main` branch. In other words, everyone's work is safe while you contribute. For more information, see "[About branches](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-branches)".
+### Instalación Manual
+```bash
+# Instalar dependencias
+pip install -r requirements.txt
 
-**What is a profile README?**: A _[profile README](https://docs.github.com/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/managing-your-profile-readme)_ is essentially an "About me" section on your GitHub profile where you can share information about yourself with the community on GitHub.com. GitHub shows your profile README at the top of your profile page. For more information, see "[Managing your profile README](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/managing-your-profile-readme)".
+# Crear directorios
+mkdir models logs backups data
 
-![profile-readme-example](/images/profile-readme-example.png)
+# Copiar configuración
+cp .env.example .env
+```
 
-### :keyboard: Activity: Your first branch
+## ⚙️ Configuración
 
-1. Open a new browser tab and navigate to your newly made repository. Then, work on the steps in your second tab while you read the instructions in this tab.
-2. Navigate to the **< > Code** tab in the header menu of your repository.
+### 1. Variables de Entorno
+Edita el archivo `.env` con tus credenciales:
 
-   ![code-tab](/images/code-tab.png)
+```bash
+# API Keys de Binance
+BINANCE_API_KEY=tu_api_key_real
+BINANCE_API_SECRET=tu_api_secret_real
 
-3. Click on the **main** branch drop-down.
+# Telegram (opcional)
+TELEGRAM_TOKEN=tu_telegram_token
+TELEGRAM_CHAT_ID=tu_chat_id
 
-   ![main-branch-dropdown](/images/main-branch-dropdown.png)
+# Base de datos
+DATABASE_URL=sqlite:///trading_bot.db
+```
 
-4. In the field, name your branch `my-first-branch`. In this case, the name must be `my-first-branch` to trigger the course workflow.
-5. Click **Create branch: my-first-branch** to create your branch.
+### 2. Configuración de Trading
+Edita `config.yaml`:
 
-   ![create-branch-button](/images/create-branch-button.png)
+```yaml
+# Símbolos a operar
+symbols:
+  - BTCUSDT
+  - ETHUSDT
+  - ADAUSDT
 
-   The branch will automatically switch to the one you have just created.
-   The **main** branch drop-down bar will reflect your new branch and display the new branch name.
+# Timeframes de análisis
+timeframes:
+  - 15m
+  - 1h
+  - 4h
 
-6. Wait about 20 seconds then refresh this page (the one you're following instructions from). [GitHub Actions](https://docs.github.com/en/actions) will automatically update to the next step.
+# Configuración de riesgo
+max_daily_loss: 0.05      # 5% pérdida máxima diaria
+max_positions: 3          # Máximo 3 posiciones simultáneas
+stop_loss_percent: 0.015  # 1.5% stop loss
+take_profit_percent: 0.025 # 2.5% take profit
 
-<footer>
+# Machine Learning
+min_confidence: 0.65      # Confianza mínima para operar
+model_retrain_hours: 24   # Reentrenar cada 24 horas
 
-<!--
-  <<< Author notes: Footer >>>
-  Add a link to get support, GitHub status page, code of conduct, license link.
--->
+# Sistema
+demo_mode: true          # ¡IMPORTANTE! Cambiar a false para trading real
+```
+
+## 🚦 Uso
+
+### Modo Demo (Recomendado para empezar)
+```bash
+# Asegúrate de que demo_mode: true en config.yaml
+python trading_bot_pro.py
+```
+
+### Modo Producción
+```bash
+# Cambiar demo_mode: false en config.yaml
+python trading_bot_pro.py
+```
+
+### Modo CLI
+```bash
+python trading_bot_pro.py --cli
+```
+
+### Con Scripts
+```bash
+# Linux/Mac
+./start_bot.sh
+
+# Windows
+start_bot.bat
+```
+
+## 📈 Características Técnicas
+
+### Indicadores Utilizados
+- **Medias Móviles**: EMA 9, 21, 50, 200
+- **Osciladores**: RSI, Stochastic, Williams %R
+- **Momentum**: MACD, CCI, ADX, ROC
+- **Volatilidad**: Bandas de Bollinger, ATR
+- **Volumen**: OBV, Volume Ratio
+- **Patrones**: Doji, Hammer, Cruces
+
+### Estrategia de ML
+1. **Preparación de Datos**: Limpieza y normalización
+2. **Feature Engineering**: Creación de características técnicas
+3. **Entrenamiento**: Modelos ensemble con validación cruzada
+4. **Predicción**: Señales con nivel de confianza
+5. **Filtrado**: Solo señales con alta confianza
+
+### Gestión de Riesgo
+- **Position Sizing**: Kelly Criterion modificado
+- **Stop Loss**: Basado en volatilidad
+- **Take Profit**: Risk-reward ratio 2:1
+- **Correlación**: Máximo 2 posiciones correlacionadas
+- **Límites**: Pérdida máxima diaria del 5%
+
+## 📊 Monitoreo
+
+### Métricas Clave
+- **PnL Diario**: Ganancias/pérdidas del día
+- **Win Rate**: Porcentaje de operaciones exitosas
+- **Sharpe Ratio**: Rendimiento ajustado por riesgo
+- **Max Drawdown**: Pérdida máxima desde el pico
+- **VaR 95%**: Valor en riesgo al 95%
+
+### Logs
+- `logs/trading_bot.log`: Log principal
+- `logs/error.log`: Solo errores
+- Base de datos: Historial completo de operaciones
+
+## 🔧 Mantenimiento
+
+### Backup
+```bash
+# Backup automático de la base de datos
+cp trading_bot.db backups/backup_$(date +%Y%m%d).db
+
+# Exportar datos a CSV
+python -c "from database import TradingDatabase; db = TradingDatabase(); db.export_to_csv('positions')"
+```
+
+### Limpieza
+```bash
+# Limpiar datos antiguos (automático)
+python -c "from database import TradingDatabase; db = TradingDatabase(); db.cleanup_old_data(90)"
+```
+
+### Actualización de Modelos
+Los modelos se reentrenan automáticamente cada 24 horas, pero puedes forzar el reentrenamiento:
+
+```python
+from ml_strategy import MLStrategy
+from config import ConfigManager
+
+config = ConfigManager().config
+ml = MLStrategy(config)
+ml.train_model('BTCUSDT', '1h', df)
+```
+
+## ⚠️ Advertencias Importantes
+
+### 🚨 Riesgos
+- **Pérdidas**: El trading de criptomonedas es altamente riesgoso
+- **Volatilidad**: Los mercados pueden ser extremadamente volátiles
+- **Fallos Técnicos**: Problemas de conectividad pueden afectar operaciones
+- **Regulación**: Las regulaciones pueden cambiar
+
+### 🛡️ Recomendaciones de Seguridad
+1. **Siempre prueba en modo DEMO primero**
+2. **Usa solo capital que puedas permitirte perder**
+3. **Monitorea el bot constantemente**
+4. **Mantén tus API keys seguras**
+5. **Haz backups regulares**
+6. **Actualiza el software regularmente**
+
+### 📋 Mejores Prácticas
+- Comienza con cantidades pequeñas
+- Revisa los logs diariamente
+- Ajusta la configuración según el rendimiento
+- Mantén un registro manual de operaciones importantes
+- Ten un plan de salida de emergencia
+
+## 🆘 Solución de Problemas
+
+### Errores Comunes
+
+#### Error de API Keys
+```
+❌ API keys de Binance no configuradas
+```
+**Solución**: Verifica que las variables de entorno estén configuradas correctamente.
+
+#### Error de Conexión
+```
+❌ Error obteniendo datos de BTCUSDT
+```
+**Solución**: Verifica la conexión a internet y el estado de la API de Binance.
+
+#### Error de Permisos
+```
+❌ Error ejecutando trade
+```
+**Solución**: Verifica que las API keys tengan permisos de trading habilitados.
+
+### Logs de Diagnóstico
+```bash
+# Ver logs en tiempo real
+tail -f logs/trading_bot.log
+
+# Buscar errores específicos
+grep "ERROR" logs/trading_bot.log
+
+# Ver estadísticas de la base de datos
+sqlite3 trading_bot.db "SELECT COUNT(*) FROM positions;"
+```
+
+## 📚 Documentación Adicional
+
+### Estructura del Proyecto
+```
+trading-bot-pro/
+├── trading_bot_pro.py      # Aplicación principal
+├── config.py              # Gestión de configuración
+├── database.py            # Base de datos
+├── risk_manager.py        # Gestión de riesgo
+├── ml_strategy.py         # Estrategia de ML
+├── requirements.txt       # Dependencias
+├── setup.py              # Script de instalación
+├── config.yaml           # Configuración principal
+├── .env                  # Variables de entorno
+├── models/               # Modelos ML guardados
+├── logs/                 # Archivos de log
+├── backups/              # Backups de la BD
+└── data/                 # Datos temporales
+```
+
+### API Reference
+- [Binance API Documentation](https://binance-docs.github.io/apidocs/)
+- [Telegram Bot API](https://core.telegram.org/bots/api)
+- [Technical Analysis Library](https://technical-analysis-library-in-python.readthedocs.io/)
+
+## 🤝 Contribuciones
+
+Las contribuciones son bienvenidas. Por favor:
+
+1. Fork el proyecto
+2. Crea una rama para tu feature
+3. Commit tus cambios
+4. Push a la rama
+5. Abre un Pull Request
+
+## 📄 Licencia
+
+Este proyecto está bajo la Licencia MIT. Ver `LICENSE` para más detalles.
+
+## ⚖️ Disclaimer
+
+Este software es solo para fines educativos y de investigación. El trading de criptomonedas involucra riesgos significativos y puede resultar en pérdidas sustanciales. Los usuarios son completamente responsables de sus decisiones de trading y deben consultar con asesores financieros antes de usar este software con capital real.
+
+**NO GARANTIZAMOS GANANCIAS NI ASUMIMOS RESPONSABILIDAD POR PÉRDIDAS.**
 
 ---
 
-Get help: [Post in our discussion board](https://github.com/orgs/skills/discussions/categories/introduction-to-github) &bull; [Review the GitHub status page](https://www.githubstatus.com/)
+**¿Necesitas ayuda?** Abre un issue en GitHub o revisa la documentación en los logs.
 
-&copy; 2024 GitHub &bull; [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [MIT License](https://gh.io/mit)
-
-</footer>
+**¡Happy Trading! 🚀**
