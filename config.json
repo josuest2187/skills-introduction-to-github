@@ -1,0 +1,27 @@
+{
+    "binance": {
+        "api_key": "",
+        "api_secret": "",
+        "testnet": true
+    },
+    "telegram": {
+        "token": "",
+        "chat_id": ""
+    },
+    "trading": {
+        "symbols": ["BTCUSDT", "ETHUSDT", "BNBUSDT", "ADAUSDT", "DOTUSDT", "LINKUSDT", "LTCUSDT", "XRPUSDT"],
+        "timeframes": ["15m", "1h", "4h"],
+        "limit": 200,
+        "risk_percentage": 3,
+        "tp_percentage": 2.5,
+        "sl_percentage": 1.5,
+        "min_balance": 15,
+        "max_trades_per_day": 8
+    },
+    "ml": {
+        "model_type": "RandomForest",
+        "n_estimators": 100,
+        "test_size": 0.2,
+        "min_accuracy": 0.65
+    }
+}
