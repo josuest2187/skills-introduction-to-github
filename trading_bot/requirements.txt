@@ -1,0 +1,7 @@
+Flask
+python-binance
+python-dotenv
+
+# Testing libraries
+pytest
+pytest-mock
