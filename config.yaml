@@ -1,0 +1,62 @@
+# Advanced Trading Bot v3.0 Configuration
+# ==========================================
+
+# Binance API Configuration
+binance_api_key: ""  # Add your Binance API key here
+binance_api_secret: ""  # Add your Binance API secret here
+binance_testnet: true  # Set to false for live trading (USE WITH CAUTION!)
+
+# Trading Parameters
+symbols:
+  - "BTCUSDT"
+  - "ETHUSDT"
+  - "BNBUSDT"
+  - "ADAUSDT"
+  - "SOLUSDT"
+
+timeframes:
+  - "5m"
+  - "15m"
+  - "1h"
+  - "4h"
+
+risk_percentage: 2.0  # Risk per trade as percentage of portfolio
+max_positions: 5  # Maximum number of open positions
+min_balance: 100.0  # Minimum balance to maintain
+
+# Machine Learning Configuration
+ml_models:
+  - "randomforest"
+  - "xgboost"
+  - "lightgbm"
+
+training_window: 1000  # Number of data points for training
+retrain_frequency: 24  # Hours between model retraining
+min_accuracy: 0.65  # Minimum model accuracy to use for trading
+ensemble_method: "voting"  # voting, stacking, blending
+
+# Risk Management
+stop_loss_atr_multiplier: 2.0  # Stop loss as multiple of ATR
+take_profit_atr_multiplier: 3.0  # Take profit as multiple of ATR
+max_drawdown_percent: 15.0  # Maximum allowed drawdown percentage
+position_sizing_method: "volatility"  # fixed, volatility, kelly
+
+# Backtesting Configuration
+backtest_start_date: "2023-01-01"
+backtest_end_date: "2024-12-31"
+commission_rate: 0.001  # 0.1% commission
+slippage_rate: 0.0005  # 0.05% slippage
+
+# Web Dashboard
+web_port: 5000
+update_frequency: 30  # seconds
+enable_websockets: true
+
+# Notification Settings
+telegram_token: ""  # Telegram bot token
+telegram_chat_id: ""  # Your Telegram chat ID
+discord_webhook: ""  # Discord webhook URL
+email_smtp_server: ""  # SMTP server for email notifications
+email_port: 587
+email_username: ""
+email_password: ""
